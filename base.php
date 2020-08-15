@@ -1,21 +1,15 @@
 <?php
+
+// library
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/library/ip-vanish/module.php';
 
+// implements
 use Curl\Curl;
-
 $IPVanish = new IPVanish();
-$servers_location = $IPVanish->servers();
 
-/**
- *  Confirguration IP Vanish Premium
- *  Support SOCKS5
- */
-
- $username = 'USERNAME-IPVANISH';
- $password = 'PASSWORD-IPVANISH';
- $servers = $IPVanish->servers();
- $port = '1080';
+// configuration
+include('config/configuration.php');
 
 $curl = new Curl();
 $curl->setProxy($servers, $port, $username, $password);
